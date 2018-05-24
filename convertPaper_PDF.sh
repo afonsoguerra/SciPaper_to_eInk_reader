@@ -4,6 +4,7 @@ EXTRA='-p 1-19 -n -ds 1.3' #selecing page numbers
 #EXTRA='-ds 1.2' #Document scaling
 #EXTRA='' #blank options
 
+###Hey, please not that the margins change with the ds option above, so if a scaling factor is used, a scaled margin needs to be used too... (or so it seems)
 #large bottom margin
 #MARGINS='0,0,0,2'
 #Trim all around
@@ -19,8 +20,8 @@ MARGINS='0,0.4,0,0.15'
 
 
 #Filesize reduction
-#BWBIT=1 #BW
-BWBIT=2 #4 Greys
+BWBIT=1 #BW
+#BWBIT=2 #4 Greys
 #BWBIT=4 #default (16 Greys)
 
 #DITHERSTRING=''
