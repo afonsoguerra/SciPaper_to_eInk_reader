@@ -7,6 +7,7 @@ use GD;
 #Disclaimer: This is a modified version of https://gist.github.com/stanaka/3892964
 
 my $globCounter = 1;
+my $betweenLineSpacing = 5; #default = 2
 
 sub draw_page {
     my ($width, $height) = @_;
@@ -21,11 +22,11 @@ sub draw_page {
 
         $im->filledRectangle(0, 0, $width-1, $height-1, $white);
 
-        for(my $y = 0; $y < $height; $y += 2){
+        for(my $y = 0; $y < $height; $y += $betweenLineSpacing){
             $im->line(0,$y,$width-1,$y,$black);
         }
 
-        for(my $x = 0; $x < $width; $x += 2){
+        for(my $x = 0; $x < $width; $x += $betweenLineSpacing){
             $im->line($x, 0, $x, $height-1, $black);
         }
 
@@ -75,34 +76,52 @@ my @pdfs;
 #push @pdfs, draw_page(658, 940);
 
 
-#1150x776 - online
-push @pdfs, draw_page(1150, 776);
-push @pdfs, draw_page(1150, 776);
+##1150x776 - online
+#push @pdfs, draw_page(1150, 776);
+#push @pdfs, draw_page(1150, 776);
+#
+##1180x800 - k2pdfopt
+#push @pdfs, draw_page(1180, 800);
+#push @pdfs, draw_page(1180, 800);
+#
+##1136x786 - other online
+#push @pdfs, draw_page(1136, 786);
+#push @pdfs, draw_page(1136, 786);
 
-#1180x800 - k2pdfopt
-push @pdfs, draw_page(1180, 800);
-push @pdfs, draw_page(1180, 800);
 
-#1136x786 - other online
-push @pdfs, draw_page(1136, 786);
-push @pdfs, draw_page(1136, 786);
 
-for(my $y = 1147; $y < 1153; $y+=1){
-    for(my $x = 773; $x < 779; $x+=1){
-        push @pdfs, draw_page($x, $y);
-        push @pdfs, draw_page($x, $y);
-    };
-};
+####Oasis 2
+push @pdfs, draw_page( 1264,1680);
+push @pdfs, draw_page( 1264,1680);
 
-for(my $y = 1177; $y < 1183; $y+=1){
-    for(my $x = 797; $x < 803; $x+=1){
-        push @pdfs, draw_page($x, $y);
-        push @pdfs, draw_page($x, $y);
-    };
-};
+push @pdfs, draw_page(1200, 1584);
+push @pdfs, draw_page(1200, 1584);
 
-for(my $y = 1133; $y < 1139; $y+=1){
-    for(my $x = 783; $x < 789; $x+=1){
+#
+#for(my $y = 1147; $y < 1153; $y+=1){
+#    for(my $x = 773; $x < 779; $x+=1){
+#        push @pdfs, draw_page($x, $y);
+#        push @pdfs, draw_page($x, $y);
+#    };
+#};
+#
+#for(my $y = 1177; $y < 1183; $y+=1){
+#    for(my $x = 797; $x < 803; $x+=1){
+#        push @pdfs, draw_page($x, $y);
+#        push @pdfs, draw_page($x, $y);
+#    };
+#};
+#
+#for(my $y = 1133; $y < 1139; $y+=1){
+#    for(my $x = 783; $x < 789; $x+=1){
+#        push @pdfs, draw_page($x, $y);
+#        push @pdfs, draw_page($x, $y);
+#    };
+#};
+
+
+for(my $y = 1584-2; $y < 1584+2; $y+=1){
+    for(my $x = 1200-2; $x < 1200+2; $x+=1){
         push @pdfs, draw_page($x, $y);
         push @pdfs, draw_page($x, $y);
     };

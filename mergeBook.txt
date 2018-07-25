@@ -1,0 +1,2 @@
+pdftk Molecular-Biology-of-the-Cell.pdf-PART0*.pdf cat output MBoC_OASIS2_Trimmed.pdf
+
