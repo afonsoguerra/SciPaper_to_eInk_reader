@@ -7,8 +7,10 @@
 #EXTRA='-neg' #Negative output
 #EXTRA='' #blank options
 
+#DEBUG=" -sm "
 
-#PAGESELECT="-p 4-"
+#PAGESELECT="-p 6-"
+#PAGESELECT="-p 8-16"
 #PAGESELECT="-p 4,5,8-10,12,20,24,33,37,38,467,888,1234"
 #PAGESELECT="-p 4,334-473,848-923,1211-1233" #MBoC pages to read
 
@@ -22,9 +24,12 @@ ZOOMLEVEL="-ds 1.3"
 #MARGINS='0.3,0.7,0.7,0.4'
 #MARGINS='0.3,0.8,0.7,0.8' #For immune system book on -ds 1.3
 
+#Pre-trimmed margins
+#MARGINS='0,0.5,0,0'
+MARGINS='0,0.7,0,0'
 
 #Cell paper at -ds 1.3
-MARGINS='0.3,1.12,0.7,0.62'
+#MARGINS='0.3,1.12,0.7,0.62'
 
 #Science mode
 #MARGINS='0.5,0.7,0.5,0.5'
@@ -41,18 +46,22 @@ MARGINS='0.3,1.12,0.7,0.62'
 #MARGINS='0,0.40,0,0.15' #with ds1.3
 #MARGINS='0,0.49,0,0.15'  #with ds1.3
 
+#Bioinformatics - TopBottom+ds1.3
+#MARGINS='0,0.9,0,0.95'
+
+
 #MAXCOL=4 #Maximum number of columns to be detected
-MAXCOL=2 #Maximum number of columns to be detected
-#MAXCOL=1 #Maximum number of columns to be detected
+#MAXCOL=2 #Maximum number of columns to be detected
+MAXCOL=1 #Maximum number of columns to be detected
 
 #OCR options
-#OCRSTRING='' #default (faster)
+OCRSTRING='' #default (faster)
 #OCRSTRING='-ocr t -ocrhmax 1 -ocrvis s -nt 2' #tesseract (needs separate installation, much slower, but more accurate)
 
 #Filesize reduction
-#BWBIT=1 #BW
+BWBIT=1 #BW
 #BWBIT=2 #4 Greys
-BWBIT=4 #default (16 Greys)
+#BWBIT=4 #default (16 Greys)
 
 
 ###DEV="kpw" #Should be the right one but resolution not good enough, big margins
@@ -81,6 +90,13 @@ DEV="kv -w 1200 -h 1583"
 #DEV="kv -w 1264 -h 1680"
 DEV2=OASIS2
 
+
+
+###Ipad mode test
+#DEV="kbh2o -w 1536 -h 2048"
+#DEV2=iPad
+
+
 #DITHERSTRING=''
 DITHERSTRING='-d-' #No dithering
 
@@ -90,11 +106,10 @@ DITHERSTRING='-d-' #No dithering
 ######################## Finished setup, actually running stuff
 
 ###Mix of all the options above to make it as generic as possible and controlled by variables
-#k2pdfopt ${EXTRA} ${OCRSTRING} -m ${MARGINS} -bpc ${BWBIT} ${DITHERSTRING} -ehl 0 -evl 1 -ui- -dev ${DEV} -col ${MAXCOL} -cg 0.1 -cgmax 1 -ch 1 -cgr 0.33 -crgh 0.014 -comax 0.3 -o $1-${DEV2}-BW.pdf -ow 20 -x -wrap ${HYPHENS} -ws -0.2 -j -1 -jf -1 0.75 -sm -cmax 1.5 -s- -g 0.5 -wt -1 $1
-
+#k2pdfopt ${PAGESELECT} ${ZOOMLEVEL} ${EXTRA} ${OCRSTRING} -m ${MARGINS} -bpc ${BWBIT} ${DITHERSTRING} -ehl 0 -evl 1 -ui- -dev ${DEV} -col ${MAXCOL} -cg 0.1 -cgmax 1 -ch 1 -cgr 0.33 -crgh 0.014 -comax 0.3 -o $1-${DEV2}-BW.pdf -ow 20 -x -wrap ${HYPHENS} -ws -0.2 -j -1 -jf -1 0.75 ${DEBUG} -cmax 1 -s- -g 0.5 -wt -1 $1
 
 ###Native mode - book landscape
-#k2pdfopt -mode fw -ui- -col ${MAXCOL} -dev ${DEV} $1
+k2pdfopt ${PAGESELECT} -m ${MARGINS} -mode fw -ui- -x -col ${MAXCOL} -o $1-${DEV2}-native_fw_bookLandscape.pdf -dev ${DEV} $1
 
 #echo "k2pdfopt ${PAGESELECT} -sm -mode fw -m ${MARGINS} -x -ui- ${ZOOMLEVEL} -col ${MAXCOL} -dev ${DEV} -o $1-fitWidth-${DEV2}-native.pdf $1"
 #k2pdfopt ${PAGESELECT} -mode fw -m ${MARGINS} -x -ui- ${ZOOMLEVEL} -col ${MAXCOL} -dev ${DEV} -o $1-fitWidth-${DEV2}-native.pdf $1
@@ -104,7 +119,7 @@ DITHERSTRING='-d-' #No dithering
 
 ###Native mode - paper
 #k2pdfopt -mode 2col -sm -m ${MARGINS} -x -ui- ${ZOOMLEVEL} -col ${MAXCOL} -o $1-${DEV2}-native_2col.pdf -dev ${DEV} $1
-echo k2pdfopt -mode 2col -m ${MARGINS} -x -ui- ${ZOOMLEVEL} -cg 0.1 -cgmax 1 -ch 1 -cgr 0.33 -crgh 0.014 -comax 0.3 -col ${MAXCOL} -o $1-${DEV2}-native_2col.pdf -sm -dev ${DEV} $1
+#echo k2pdfopt -mode 2col -m ${MARGINS} -x -ui- ${ZOOMLEVEL} -cg 0.1 -cgmax 1 -ch 1 -cgr 0.33 -crgh 0.014 -comax 0.3 -col ${MAXCOL} -o $1-${DEV2}-native_2col.pdf -sm -dev ${DEV} $1
 
 ###Native mode - trim margins only to then use OASIS landscape mode
 #k2pdfopt ${PAGESELECT} -mode tm -m ${MARGINS} -x -ui- ${ZOOMLEVEL} -o $1-${DEV2}-native_trim.pdf -sm -dev ${DEV} $1 #Marked
