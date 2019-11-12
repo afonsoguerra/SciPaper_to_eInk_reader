@@ -8,16 +8,17 @@
 #EXTRA='-neg' #Negative output
 #EXTRA='' #blank options
 
-DEBUG=" -sm "
+#DEBUG=" -sm "
 
-#PAGESELECT="-p 6-"
-PAGESELECT="-p 302-312"
+#PAGESELECT="-p 1-6"
+#PAGESELECT="-p 302-312"
 #PAGESELECT="-p 4,5,8-10,12,20,24,33,37,38,467,888,1234"
 #PAGESELECT="-p 4,334-473,848-923,1211-1233" #MBoC pages to read
 
 #ZOOMLEVEL="-ds 1.3"
 #ZOOMLEVEL="-ds 1.2"
-ZOOMLEVEL="-ds 0.7"
+ZOOMLEVEL="-ds 0.9"
+#ZOOMLEVEL="-ds 0.7"
 
 ###Hey, please not that the margins change with the ds option above, so if a scaling factor is used, a scaled margin needs to be used too... (or so it seems)
 ###Margins in inches
@@ -28,9 +29,10 @@ ZOOMLEVEL="-ds 0.7"
 #MARGINS='0.3,0.8,0.7,0.8' #For immune system book on -ds 1.3
 
 #Pre-trimmed margins
-MARGINS='0,0.5,0,0'
+#MARGINS='0,0.5,0,0'
 #MARGINS='0,0.7,0,0'
-#MARGINS='0,1.0,0,0'
+#MARGINS='0,0.8,0,0'
+MARGINS='0,1.3,0,0'
 
 #Cell paper at -ds 1.3
 #MARGINS='0.3,1.12,0.7,0.62'
@@ -69,8 +71,8 @@ BWBIT=4 #default (16 Greys)
 
 
 ###DEV="kpw" #Should be the right one but resolution not good enough, big margins
-DEV="kp2" #Seems to be perfect resolution for small margin mode in Kindle Paperwhite
-DEV2=${DEV}
+#DEV="kp2" #Seems to be perfect resolution for small margin mode in Kindle Paperwhite
+#DEV2=${DEV}
 
 
 #Confirmed no distortion on DXG, need to assess clipping
@@ -92,10 +94,11 @@ DEV2=${DEV}
 #DEV="kv -w 1264 -h 1680"
 #-w 1200 -h 1584 -dpi 300
 
-#Good stuff below for oasis
-#DEV="kv -w 1200 -h 1583"
-#DEV2=OASIS2
-
+###Good stuff below for oasis
+DEV="kv -w 1200 -h 1583"
+DEV2=OASIS2
+#DEV="ko2" #new, built in kindle oasis2 mode
+#DEV2=${DEV}
 
 ###Ipad mode test
 #DEV="kbh2o -w 1536 -h 2048"
