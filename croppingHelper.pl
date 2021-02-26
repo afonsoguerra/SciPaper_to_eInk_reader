@@ -54,7 +54,7 @@ my $bottomLines = -1*$bottom*$lineSize;
 #--margins "<left> <top> <right> <bottom>" 
 #pdfcrop --verbose --margins "0 -30 0 -15" journal.pone.0162571.PDF ; open journal.pone.0162571-crop.pdf
 
-system("pdfcrop --margins \"$leftLines $topLines $rightLines $bottomLines\" \"$data\"");
+system("pdfcrop --clip --margins \"$leftLines $topLines $rightLines $bottomLines\" \"$data\"");
 
 #open cropped PDF
 system("open $outfile")
