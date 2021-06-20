@@ -1,0 +1,6 @@
+[submodule "testKindleRes/sam2p"]
+	path = testKindleRes/sam2p
+	url = https://github.com/pts/sam2p.git
+[submodule "testKindleRes/tif22pnm"]
+	path = testKindleRes/tif22pnm
+	url = https://github.com/pts/tif22pnm.git

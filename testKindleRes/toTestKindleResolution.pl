@@ -7,7 +7,7 @@ use GD;
 #Disclaimer: This is a modified version of https://gist.github.com/stanaka/3892964
 
 my $globCounter = 1;
-my $betweenLineSpacing = 5; #default = 2
+my $betweenLineSpacing = 10; #default = 2
 
 sub draw_page {
     my ($width, $height) = @_;
@@ -30,7 +30,7 @@ sub draw_page {
             $im->line($x, 0, $x, $height-1, $black);
         }
 
-        my $font_file = "/Library/Fonts/Georgia.ttf";
+        my $font_file = "/home/afonso/dropbox/UCL-BLIC/SciPaper_to_eInk_reader/testKindleRes/Georgia.ttf";
         my ($pos_x, $pos_y) = (100, 100);
         my $size = 50;
         $im->filledRectangle($pos_x, $pos_y - $size * 1.1, $pos_x + $size * 7, $pos_y + $size * 0.1, $white);
@@ -91,11 +91,11 @@ my @pdfs;
 
 
 ####Oasis 2
-push @pdfs, draw_page( 1264,1680);
-push @pdfs, draw_page( 1264,1680);
+# push @pdfs, draw_page( 1264,1680);
+# push @pdfs, draw_page( 1264,1680);
 
-push @pdfs, draw_page(1200, 1584);
-push @pdfs, draw_page(1200, 1584);
+# push @pdfs, draw_page(1200, 1584);
+# push @pdfs, draw_page(1200, 1584);
 
 #
 #for(my $y = 1147; $y < 1153; $y+=1){
@@ -120,12 +120,26 @@ push @pdfs, draw_page(1200, 1584);
 #};
 
 
-for(my $y = 1584-2; $y < 1584+2; $y+=1){
-    for(my $x = 1200-2; $x < 1200+2; $x+=1){
-        push @pdfs, draw_page($x, $y);
-        push @pdfs, draw_page($x, $y);
+# for(my $y = 1616-2; $y < 1616+2; $y+=1){
+#     for(my $x = 1147-2; $x < 1147+2; $x+=1){
+#         push @pdfs, draw_page($x, $y);
+#         push @pdfs, draw_page($x, $y);
+#     };
+# };  
+
+
+push @pdfs, draw_page(1680, 1264);
+push @pdfs, draw_page(1680, 1264);
+
+push @pdfs, draw_page(1563, 1200);
+push @pdfs, draw_page(1563, 1200);
+
+
+for(my $y = 1616-2; $y < 1616+2; $y+=1){
+    for(my $x = 1147-2; $x < 1147+2; $x+=1){
+        push @pdfs, draw_page($y, $x);
+        push @pdfs, draw_page($y, $x);
     };
 };
-
 system("pdftk", @pdfs, "cat", "output", "output2.pdf");
 

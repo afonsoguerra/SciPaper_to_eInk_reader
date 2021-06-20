@@ -8,9 +8,10 @@
 #EXTRA='-neg' #Negative output
 #EXTRA='' #blank options
 
-#DEBUG=" -sm "
+#DEBUG=" -sm"
+DEBUG=" -sm -ehl 1"
 
-#PAGESELECT="-p 1-26"
+#PAGESELECT="-p 1-6"
 #PAGESELECT="-p 302-312"
 #PAGESELECT="-p 4,5,8-10,12,20,24,33,37,38,467,888,1234"
 #PAGESELECT="-p 4,334-473,848-923,1211-1233" #MBoC pages to read
@@ -29,8 +30,8 @@ ZOOMLEVEL="-ds 1.3"
 #MARGINS='0.3,0.8,0.7,0.8' #For immune system book on -ds 1.3
 
 #Pre-trimmed margins
-MARGINS='0,0,0,0'
-#MARGINS='0,0.5,0,0'
+#MARGINS='0,0,0,0'
+MARGINS='0,0.85,0,0.75'
 #MARGINS='0,0.7,0,0'
 #MARGINS='0,0.8,0,0'
 #MARGINS='0,1.3,0,0'
@@ -59,9 +60,9 @@ MARGINS='0,0,0,0'
 #MARGINS='0,0.9,0,0.95'
 
 
-#MAXCOL=4 #Maximum number of columns to be detected
+MAXCOL=3 #Maximum number of columns to be detected
 #MAXCOL=2 #Maximum number of columns to be detected
-MAXCOL=1 #Maximum number of columns to be detected
+#MAXCOL=1 #Maximum number of columns to be detected
 
 #OCR options
 OCRSTRING='' #default (faster)
