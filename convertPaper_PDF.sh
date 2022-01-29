@@ -9,7 +9,8 @@
 #EXTRA='' #blank options
 
 #DEBUG=" -sm"
-DEBUG=" -sm -ehl 1"
+#DEBUG=" -sm -ehl 1"
+DEBUG=" -ehl 1"
 
 #PAGESELECT="-p 1-6"
 #PAGESELECT="-p 302-312"
