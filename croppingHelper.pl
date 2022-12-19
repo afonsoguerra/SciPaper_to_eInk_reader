@@ -57,4 +57,4 @@ my $bottomLines = -1*$bottom*$lineSize;
 system("pdfcrop --clip --margins \"$leftLines $topLines $rightLines $bottomLines\" \"$data\"");
 
 #open cropped PDF
-system("open $outfile")
+system("google-chrome $outfile")

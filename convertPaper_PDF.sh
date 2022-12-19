@@ -6,13 +6,14 @@
 #EXTRA='-n' #Native pdf
 #EXTRA='-ds 1.3' #Document scaling
 #EXTRA='-neg' #Negative output
-#EXTRA='' #blank options
+EXTRA='' #blank options
 
 #DEBUG=" -sm"
 #DEBUG=" -sm -ehl 1"
 DEBUG=" -ehl 1"
 
-#PAGESELECT="-p 1-6"
+PAGESELECT=""
+#PAGESELECT="-p 1-12"
 #PAGESELECT="-p 302-312"
 #PAGESELECT="-p 4,5,8-10,12,20,24,33,37,38,467,888,1234"
 #PAGESELECT="-p 4,334-473,848-923,1211-1233" #MBoC pages to read
@@ -31,8 +32,8 @@ ZOOMLEVEL="-ds 1.3"
 #MARGINS='0.3,0.8,0.7,0.8' #For immune system book on -ds 1.3
 
 #Pre-trimmed margins
-#MARGINS='0,0,0,0'
-MARGINS='0,0.85,0,0.75'
+MARGINS='0,0,0,0'
+#MARGINS='0,0.85,0,0.75'
 #MARGINS='0,0.7,0,0'
 #MARGINS='0,0.8,0,0'
 #MARGINS='0,1.3,0,0'
@@ -61,8 +62,8 @@ MARGINS='0,0.85,0,0.75'
 #MARGINS='0,0.9,0,0.95'
 
 
-MAXCOL=3 #Maximum number of columns to be detected
-#MAXCOL=2 #Maximum number of columns to be detected
+#MAXCOL=3 #Maximum number of columns to be detected
+MAXCOL=2 #Maximum number of columns to be detected
 #MAXCOL=1 #Maximum number of columns to be detected
 
 #OCR options
@@ -70,9 +71,9 @@ OCRSTRING='' #default (faster)
 #OCRSTRING='-ocr t -ocrhmax 1 -ocrvis s -nt 2' #tesseract (needs separate installation, much slower, but more accurate)
 
 #Filesize reduction
-BWBIT=1 #BW
+#BWBIT=1 #BW
 #BWBIT=2 #4 Greys
-#BWBIT=4 #default (16 Greys)
+BWBIT=4 #default (16 Greys)
 
 
 ###DEV="kpw" #Should be the right one but resolution not good enough, big margins
@@ -96,12 +97,16 @@ BWBIT=1 #BW
 ###Temporary modes for Kindle Oasis 2
 #mytest: 1198x1582
 # 1680x1264
-#DEV="kv -w 1264 -h 1680"
+DEV="kv -w 1264 -h 1680"
+DEV2=KOBO7
 #-w 1200 -h 1584 -dpi 300
 
+#1448 x 1072 resolution (300ppi). - Kobo Clara2E - aka KOBO6
+
+
 ###Good stuff below for oasis
-DEV="kv -w 1200 -h 1583"
-DEV2=OASIS2
+#DEV="kv -w 1200 -h 1583"
+#DEV2=OASIS2
 
 #DEV="ko2" #new, built in kindle oasis2 mode
 #DEV2=${DEV}
@@ -123,7 +128,8 @@ DITHERSTRING='-d-' #No dithering
 #k2pdfopt ${PAGESELECT} ${ZOOMLEVEL} ${EXTRA} ${OCRSTRING} -m ${MARGINS} -bpc ${BWBIT} ${DITHERSTRING} -ehl 0 -evl 1 -ui- -dev ${DEV} -col ${MAXCOL} -cg 0.1 -cgmax 1 -ch 1 -cgr 0.33 -crgh 0.014 -comax 0.3 -o $1-${DEV2}-BW.pdf -ow 20 -x -wrap ${HYPHENS} -ws -0.2 -j -1 -jf -1 0.75 ${DEBUG} -cmax 1 -s- -g 0.5 -wt -1 $1
 
 ###Native mode - book landscape
-k2pdfopt ${PAGESELECT} ${DEBUG} ${ZOOMLEVEL} -m ${MARGINS} -bpc ${BWBIT} -mode fw -ui- -x -col ${MAXCOL} -o $1-${DEV2}-native_fw_bookLandscape.pdf -dev ${DEV} $1
+#k2pdfopt ${PAGESELECT} ${DEBUG} ${ZOOMLEVEL} -m ${MARGINS} -bpc ${BWBIT} -mode fw -ui- -x -col ${MAXCOL} -o $1-${DEV2}-native_fw_bookLandscape.pdf -dev ${DEV} $1
+k2pdfopt -m ${MARGINS} -n -mode fw -ui- -x -col ${MAXCOL} -o $1-${DEV2}-native_fw_bookLandscape.pdf -dev ${DEV} $1
 
 ### Is this fit width?
 #echo "k2pdfopt ${PAGESELECT} -sm -mode fw -m ${MARGINS} -x -ui- ${ZOOMLEVEL} -col ${MAXCOL} -dev ${DEV} -o $1-fitWidth-${DEV2}-native.pdf $1"
@@ -139,7 +145,7 @@ k2pdfopt ${PAGESELECT} ${DEBUG} ${ZOOMLEVEL} -m ${MARGINS} -bpc ${BWBIT} -mode f
 #k2pdfopt ${PAGESELECT} ${DEBUG}  -mode fp -m ${MARGINS} -x -ui- ${ZOOMLEVEL} -col ${MAXCOL} -dev ${DEV} -o $1-fitPage-${DEV2}-native.pdf $1
 
 ###Native mode - paper
-#k2pdfopt -mode 2col -sm -m ${MARGINS} -x -ui- ${ZOOMLEVEL} -col ${MAXCOL} -o $1-${DEV2}-native_2col.pdf -dev ${DEV} $1
+#k2pdfopt -mode 2col -m ${MARGINS} -x -ui- ${ZOOMLEVEL} -col ${MAXCOL} -o $1-${DEV2}-native_2col.pdf -dev ${DEV} $1
 #echo k2pdfopt -mode 2col -m ${MARGINS} -x -ui- ${ZOOMLEVEL} -cg 0.1 -cgmax 1 -ch 1 -cgr 0.33 -crgh 0.014 -comax 0.3 -col ${MAXCOL} -o $1-${DEV2}-native_2col.pdf -sm -dev ${DEV} $1
 
 ###Native mode - trim margins only to then use OASIS landscape mode

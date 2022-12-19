@@ -30,7 +30,7 @@ sub draw_page {
             $im->line($x, 0, $x, $height-1, $black);
         }
 
-        my $font_file = "/home/afonso/dropbox/UCL-BLIC/SciPaper_to_eInk_reader/testKindleRes/Georgia.ttf";
+        my $font_file = "Georgia.ttf";
         my ($pos_x, $pos_y) = (100, 100);
         my $size = 50;
         $im->filledRectangle($pos_x, $pos_y - $size * 1.1, $pos_x + $size * 7, $pos_y + $size * 0.1, $white);
@@ -127,19 +127,31 @@ my @pdfs;
 #     };
 # };  
 
+#### Version for Oasis 2 tests
+# push @pdfs, draw_page(1680, 1264);
+# push @pdfs, draw_page(1680, 1264);
 
-push @pdfs, draw_page(1680, 1264);
-push @pdfs, draw_page(1680, 1264);
-
-push @pdfs, draw_page(1563, 1200);
-push @pdfs, draw_page(1563, 1200);
+# push @pdfs, draw_page(1563, 1200);
+# push @pdfs, draw_page(1563, 1200);
 
 
-for(my $y = 1616-2; $y < 1616+2; $y+=1){
-    for(my $x = 1147-2; $x < 1147+2; $x+=1){
-        push @pdfs, draw_page($y, $x);
-        push @pdfs, draw_page($y, $x);
-    };
-};
+# for(my $y = 1616-2; $y < 1616+2; $y+=1){
+#     for(my $x = 1147-2; $x < 1147+2; $x+=1){
+#         push @pdfs, draw_page($y, $x);
+#         push @pdfs, draw_page($y, $x);
+#     };
+# };
+
+my $yres = 1448;
+my $xres = 1072;
+
+ for(my $y = $yres-2; $y < $yres+2; $y+=1){
+     for(my $x = $xres-2; $x < $xres+2; $x+=1){
+         push @pdfs, draw_page($y, $x);
+         push @pdfs, draw_page($x, $y);
+     };
+ };
+
+
 system("pdftk", @pdfs, "cat", "output", "output2.pdf");
 
