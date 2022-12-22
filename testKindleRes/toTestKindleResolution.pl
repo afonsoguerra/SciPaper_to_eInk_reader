@@ -30,7 +30,7 @@ sub draw_page {
             $im->line($x, 0, $x, $height-1, $black);
         }
 
-        my $font_file = "Georgia.ttf";
+        my $font_file = "/home/afonso/dropbox-ucl/UCL-BLIC/SciPaper_to_eInk_reader/testKindleRes/Georgia.ttf";
         my ($pos_x, $pos_y) = (100, 100);
         my $size = 50;
         $im->filledRectangle($pos_x, $pos_y - $size * 1.1, $pos_x + $size * 7, $pos_y + $size * 0.1, $white);

@@ -3,3 +3,4 @@ commandsToProcess*
 *.djvu
 
 toIgnore
+testKindleRes/*.png
