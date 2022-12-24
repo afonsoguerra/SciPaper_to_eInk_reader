@@ -2,12 +2,12 @@
 
 K2BIN=k2pdfopt_22-358.simg
 
-EXTRA='-p 1-10 -ds 1.3' #selecing page numbers
+#EXTRA='-p 1-10' #selecing page numbers
 #EXTRA='-p 302-312 -n' #selecing page numbers
 #EXTRA='-n -ds 1.3' #native pdf from djvu with scaling
 #EXTRA='-n' #Native pdf - doesn't seem to work anymore?
 #EXTRA='-ds 1.3' #Document scaling
-#EXTRA='-neg' #Negative output
+EXTRA='-neg' #Negative output
 #EXTRA='' #blank options
 
 #DEBUG=" -sm"
@@ -38,7 +38,7 @@ ZOOMLEVEL="-ds 1.3"
 #MARGINS='0,0.85,0,0.75'
 
 #LooseEnds Brenner
-MARGINS='0,0.7,0,0.6'
+MARGINS='0,0.74,0,0.74'
 
 #MARGINS='0,0.7,0,0'
 #MARGINS='0,0.8,0,0'
@@ -125,7 +125,7 @@ DEV2=KOBO7
 
 
 #DITHERSTRING=''
-DITHERSTRING='-d-' #No dithering
+#DITHERSTRING='-d-' #No dithering
 
 #HYPHENS="-hy" #default
 #HYPHENS="-hy-" #keep hyphens
@@ -137,7 +137,7 @@ DITHERSTRING='-d-' #No dithering
 
 ###Native mode - book landscape
 #k2pdfopt ${PAGESELECT} ${DEBUG} ${ZOOMLEVEL} -m ${MARGINS} -bpc ${BWBIT} -mode fw -ui- -x -col ${MAXCOL} -o $1-${DEV2}-native_fw_bookLandscape.pdf -dev ${DEV} $1
-$K2BIN -m ${MARGINS} -mode fw -ui- -x -col ${MAXCOL} ${EXTRA} ${DEBUG} -o $1-${DEV2}-native_fw_bookLandscape.pdf -dev ${DEV} $1
+$K2BIN -m ${MARGINS} ${ZOOMLEVEL} -mode fw -ui- -x -col ${MAXCOL} ${PAGESELECT} ${DEBUG} ${EXTRA} -o $1-${DEV2}-native_fw_bookLandscape.pdf -dev ${DEV} $1
 
 ### Is this fit width?
 #echo "k2pdfopt ${PAGESELECT} -sm -mode fw -m ${MARGINS} -x -ui- ${ZOOMLEVEL} -col ${MAXCOL} -dev ${DEV} -o $1-fitWidth-${DEV2}-native.pdf $1"
