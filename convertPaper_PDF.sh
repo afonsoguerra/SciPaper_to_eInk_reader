@@ -15,7 +15,7 @@ EXTRA='-neg' #Negative output
 DEBUG=" -ehl 1"
 
 PAGESELECT=""
-#PAGESELECT="-p 1-12"
+#PAGESELECT="-p 1-25"
 #PAGESELECT="-p 302-312"
 #PAGESELECT="-p 4,5,8-10,12,20,24,33,37,38,467,888,1234"
 #PAGESELECT="-p 4,334-473,848-923,1211-1233" #MBoC pages to read
@@ -38,7 +38,10 @@ ZOOMLEVEL="-ds 1.3"
 #MARGINS='0,0.85,0,0.75'
 
 #LooseEnds Brenner
-MARGINS='0,0.74,0,0.74'
+# MARGINS='0,0.74,0,0.74'
+
+#Lovell
+MARGINS='0,0.10,0,0.70'
 
 #MARGINS='0,0.7,0,0'
 #MARGINS='0,0.8,0,0'
