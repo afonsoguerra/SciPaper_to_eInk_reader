@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
 
-#EXTRA='-p 4-34 -n -ds 1.3' #selecing page numbers
+K2BIN=k2pdfopt_22-358.simg
+
+EXTRA='-p 1-10 -ds 1.3' #selecing page numbers
 #EXTRA='-p 302-312 -n' #selecing page numbers
 #EXTRA='-n -ds 1.3' #native pdf from djvu with scaling
-#EXTRA='-n' #Native pdf
+#EXTRA='-n' #Native pdf - doesn't seem to work anymore?
 #EXTRA='-ds 1.3' #Document scaling
 #EXTRA='-neg' #Negative output
-EXTRA='' #blank options
+#EXTRA='' #blank options
 
-DEBUG=" -sm"
+#DEBUG=" -sm"
 #DEBUG=" -sm -ehl 1"
-#DEBUG=" -ehl 1"
+DEBUG=" -ehl 1"
 
 PAGESELECT=""
 #PAGESELECT="-p 1-12"
@@ -32,8 +34,12 @@ ZOOMLEVEL="-ds 1.3"
 #MARGINS='0.3,0.8,0.7,0.8' #For immune system book on -ds 1.3
 
 #Pre-trimmed margins
-MARGINS='0,0,0,0'
+#MARGINS='0,0,0,0'
 #MARGINS='0,0.85,0,0.75'
+
+#LooseEnds Brenner
+MARGINS='0,0.7,0,0.6'
+
 #MARGINS='0,0.7,0,0'
 #MARGINS='0,0.8,0,0'
 #MARGINS='0,1.3,0,0'
@@ -97,13 +103,13 @@ BWBIT=4 #default (16 Greys)
 ###Temporary modes for Kindle Oasis 2
 #mytest: 1198x1582
 # 1680x1264
-#DEV="kv -w 1264 -h 1680"
-#DEV2=KOBO7
+DEV="kv -w 1264 -h 1680"
+DEV2=KOBO7
 #-w 1200 -h 1584 -dpi 300
 
 #1448 x 1072 resolution (300ppi). - Kobo Clara2E - aka KOBO6
-DEV="kv -w 1072 -h 1448"
-DEV2=KOBO6
+#DEV="kv -w 1072 -h 1448"
+#DEV2=KOBO6
 
 
 ###Good stuff below for oasis
@@ -131,7 +137,7 @@ DITHERSTRING='-d-' #No dithering
 
 ###Native mode - book landscape
 #k2pdfopt ${PAGESELECT} ${DEBUG} ${ZOOMLEVEL} -m ${MARGINS} -bpc ${BWBIT} -mode fw -ui- -x -col ${MAXCOL} -o $1-${DEV2}-native_fw_bookLandscape.pdf -dev ${DEV} $1
-k2pdfopt -m ${MARGINS} -mode fw -ui- -x -col ${MAXCOL} -n -o $1-${DEV2}-native_fw_bookLandscape.pdf -dev ${DEV} $1
+$K2BIN -m ${MARGINS} -mode fw -ui- -x -col ${MAXCOL} ${EXTRA} ${DEBUG} -o $1-${DEV2}-native_fw_bookLandscape.pdf -dev ${DEV} $1
 
 ### Is this fit width?
 #echo "k2pdfopt ${PAGESELECT} -sm -mode fw -m ${MARGINS} -x -ui- ${ZOOMLEVEL} -col ${MAXCOL} -dev ${DEV} -o $1-fitWidth-${DEV2}-native.pdf $1"
